@@ -28,7 +28,8 @@ namespace API_GUI
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            p_playerStats.Hide();
+            playerStatsPanel.Hide();
+            matchesPanel.Hide();
         }
 
         
@@ -44,14 +45,13 @@ namespace API_GUI
         {
             try
             {
-                var summoner = await LolApiCall.LoadSummonerByName(tb_summonerName.Text, cb_region.Text);
-                
-                
-                p_playerStats.L_Level.Text = summoner.SummonerLevel.ToString();
-                p_playerStats.L_Id.Text = summoner.Id;
-                p_playerStats.L_SummonerName.Text= tb_summonerName.Text;
-                p_playerStats.L_RevisionDate.Text = summoner.ModifiedDate.ToString("d", CultureInfo.InvariantCulture);
-                p_playerStats.Show();
+                var summoner = await ApiCalls.LoadSummonerByName(tb_summonerName.Text, cb_region.Text);
+                playerStatsPanel.setLabelId(summoner.Id);
+                playerStatsPanel.setLabelLevel(summoner.SummonerLevel.ToString());
+                playerStatsPanel.setLabelName(tb_summonerName.Text);
+                playerStatsPanel.setLabelRevisionDate(summoner.ModifiedDate.ToString("d", CultureInfo.InvariantCulture));
+                matchesPanel.Hide();
+                playerStatsPanel.Show();
             }
             catch (Exception)
             {
@@ -75,6 +75,18 @@ namespace API_GUI
 
 
             ApiHelper.DeveloperKey = File.ReadAllText($@"{directory}\apiKey.txt");
+        }
+
+        private void bt_matches_Click(object sender, EventArgs e)
+        {
+            playerStatsPanel.Hide();
+            matchesPanel.Show();
+        }
+
+        private void bt_player_Click(object sender, EventArgs e)
+        {
+            playerStatsPanel.Show();
+            matchesPanel.Hide();
         }
     }
 }

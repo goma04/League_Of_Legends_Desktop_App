@@ -11,14 +11,20 @@ namespace API_GUI.League
         public string Id { get; set; }
         public int SummonerLevel { set; get; }
 
-        private long revisionDateLong;
+        private long _revisionDateLong;
+
+        public string AccountId
+        {
+            set;
+            get;
+        }
        
         
         public long RevisionDate
         {
             set
             {
-                revisionDateLong = value;
+                _revisionDateLong = value;
             }
         }
 
@@ -26,7 +32,7 @@ namespace API_GUI.League
         {
             get
             {
-                return DateTimeOffset.FromUnixTimeMilliseconds(revisionDateLong);
+                return DateTimeOffset.FromUnixTimeMilliseconds(_revisionDateLong);
             }
         }
     }

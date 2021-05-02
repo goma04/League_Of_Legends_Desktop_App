@@ -41,6 +41,7 @@
     <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,7 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiHelper\ApiHelper.cs" />
-    <Compile Include="Control\LolApiCall.cs" />
+    <Compile Include="Control\ApiCalls.cs" />
+    <Compile Include="Control\MatchProcessor.cs" />
     <Compile Include="FileHandler.cs" />
     <Compile Include="GUI\AppForm.cs">
       <SubType>Form</SubType>
@@ -61,16 +63,23 @@
     <Compile Include="GUI\AppForm.Designer.cs">
       <DependentUpon>AppForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\MatchesPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\MatchesPanel.Designer.cs">
+      <DependentUpon>MatchesPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\PlayerSummaryPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="GUI\PlayerSummaryPanel.Designer.cs">
       <DependentUpon>PlayerSummaryPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="League\Model\SummonerModel.cs" />
+    <Compile Include="Model\MatchModel.cs" />
+    <Compile Include="Model\SummonerModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="League\SummonerProcessor.cs" />
+    <Compile Include="Control\SummonerProcessor.cs" />
     <Compile Include="GUI\SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +88,9 @@
     </Compile>
     <EmbeddedResource Include="GUI\AppForm.resx">
       <DependentUpon>AppForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\MatchesPanel.resx">
+      <DependentUpon>MatchesPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\PlayerSummaryPanel.resx">
       <DependentUpon>PlayerSummaryPanel.cs</DependentUpon>
