@@ -29,10 +29,15 @@ namespace API_GUI
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.tb_key = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.bt_save = new System.Windows.Forms.Button();
+            this.currentKey = new System.Windows.Forms.ToolTip(this.components);
+            this.pb_info = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_info)).BeginInit();
             this.SuspendLayout();
             // 
             // tb_key
@@ -77,17 +82,28 @@ namespace API_GUI
             this.bt_save.UseVisualStyleBackColor = false;
             this.bt_save.Click += new System.EventHandler(this.bt_save_Click);
             // 
+            // pb_info
+            // 
+            this.pb_info.Image = ((System.Drawing.Image)(resources.GetObject("pb_info.Image")));
+            this.pb_info.Location = new System.Drawing.Point(16, 117);
+            this.pb_info.Name = "pb_info";
+            this.pb_info.Size = new System.Drawing.Size(43, 45);
+            this.pb_info.TabIndex = 13;
+            this.pb_info.TabStop = false;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(612, 174);
+            this.Controls.Add(this.pb_info);
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.bt_save);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tb_key);
             this.Name = "SettingsForm";
             this.Text = "settings";
+            ((System.ComponentModel.ISupportInitialize)(this.pb_info)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -99,5 +115,7 @@ namespace API_GUI
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button bt_save;
+        private System.Windows.Forms.ToolTip currentKey;
+        private System.Windows.Forms.PictureBox pb_info;
     }
 }

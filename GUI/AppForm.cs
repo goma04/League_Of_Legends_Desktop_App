@@ -4,7 +4,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,12 +21,14 @@ namespace API_GUI
         public form_App()
         {
             InitializeComponent();
+            tb_summonerName.Text = "kisharcos04";
+            cb_region.Text = "eun1";
             ApiHelper.InitializeClient();
         }
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            playerStatPanel.Hide();
+            p_playerStats.Hide();
         }
 
         
@@ -37,12 +42,22 @@ namespace API_GUI
 
         private async void bt_searchClick(object sender, EventArgs e)
         {
-            playerStatPanel.Show();
-            l_summonerNameTitle.Text = tb_summonerName.Text;
-            var summoner = await LolApiCall.LoadSummonerByName(tb_summonerName.Text);
-
-            l_id.Text = summoner.Id;
-            l_level.Text = summoner.SummonerLevel.ToString();
+            try
+            {
+                var summoner = await LolApiCall.LoadSummonerByName(tb_summonerName.Text, cb_region.Text);
+                
+                
+                p_playerStats.L_Level.Text = summoner.SummonerLevel.ToString();
+                p_playerStats.L_Id.Text = summoner.Id;
+                p_playerStats.L_SummonerName.Text= tb_summonerName.Text;
+                p_playerStats.L_RevisionDate.Text = summoner.ModifiedDate.ToString("d", CultureInfo.InvariantCulture);
+                p_playerStats.Show();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Summoner Cannot Be Found", "error", MessageBoxButtons.OK);
+            }
+            
         }
 
         private void tb_summonerName_KeyPress(object sender, KeyPressEventArgs e)
@@ -51,6 +66,15 @@ namespace API_GUI
             {
                 bt_searchClick(sender,new EventArgs());
             }
+        }
+
+        private void form_App_Load(object sender, EventArgs e)
+        {
+            string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            string directory = Path.GetDirectoryName(path);
+
+
+            ApiHelper.DeveloperKey = File.ReadAllText($@"{directory}\apiKey.txt");
         }
     }
 }

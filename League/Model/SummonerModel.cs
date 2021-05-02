@@ -10,5 +10,24 @@ namespace API_GUI.League
     {
         public string Id { get; set; }
         public int SummonerLevel { set; get; }
+
+        private long revisionDateLong;
+       
+        
+        public long RevisionDate
+        {
+            set
+            {
+                revisionDateLong = value;
+            }
+        }
+
+        public DateTimeOffset ModifiedDate
+        {
+            get
+            {
+                return DateTimeOffset.FromUnixTimeMilliseconds(revisionDateLong);
+            }
+        }
     }
 }

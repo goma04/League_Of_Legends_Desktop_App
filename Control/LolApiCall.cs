@@ -9,9 +9,9 @@ namespace API_GUI.Control
 {
     public static class LolApiCall
     {
-        public static async Task<SummonerModel> LoadSummonerByName(string name)
+        public static async Task<SummonerModel> LoadSummonerByName(string name, string region)
         {
-            var summoner = await SummonerProcessor.LoadSummoner(name);
+            var summoner = await SummonerProcessor.LoadSummoner(name, region);
             return summoner;
         }
     }

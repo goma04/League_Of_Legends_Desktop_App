@@ -46,23 +46,17 @@ namespace API_GUI
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.playerStatPanel = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.l_summonerNameTitle = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
+            this.p_search = new System.Windows.Forms.Panel();
+            this.cb_region = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tb_summonerName = new System.Windows.Forms.TextBox();
             this.panel9 = new System.Windows.Forms.Panel();
             this.bt_search = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.l_id = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.l_level = new System.Windows.Forms.Label();
+            this.p_playerStats = new API_GUI.GUI.PlayerSummaryPanel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.playerStatPanel.SuspendLayout();
-            this.panel8.SuspendLayout();
+            this.p_search.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -129,7 +123,7 @@ namespace API_GUI
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.panel5.BackColor = System.Drawing.Color.Brown;
             this.panel5.Location = new System.Drawing.Point(0, 183);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(16, 84);
@@ -268,55 +262,32 @@ namespace API_GUI
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
-            // playerStatPanel
+            // p_search
             // 
-            this.playerStatPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.playerStatPanel.Controls.Add(this.label6);
-            this.playerStatPanel.Controls.Add(this.l_level);
-            this.playerStatPanel.Controls.Add(this.label3);
-            this.playerStatPanel.Controls.Add(this.l_id);
-            this.playerStatPanel.Controls.Add(this.label5);
-            this.playerStatPanel.Controls.Add(this.l_summonerNameTitle);
-            this.playerStatPanel.Location = new System.Drawing.Point(216, 240);
-            this.playerStatPanel.Name = "playerStatPanel";
-            this.playerStatPanel.Size = new System.Drawing.Size(874, 468);
-            this.playerStatPanel.TabIndex = 3;
+            this.p_search.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.p_search.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.p_search.Controls.Add(this.cb_region);
+            this.p_search.Controls.Add(this.label4);
+            this.p_search.Controls.Add(this.tb_summonerName);
+            this.p_search.Controls.Add(this.panel9);
+            this.p_search.Controls.Add(this.bt_search);
+            this.p_search.Location = new System.Drawing.Point(216, 38);
+            this.p_search.Name = "p_search";
+            this.p_search.Size = new System.Drawing.Size(564, 168);
+            this.p_search.TabIndex = 4;
             // 
-            // label5
+            // cb_region
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label5.Location = new System.Drawing.Point(70, 39);
-            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(114, 37);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Name:";
-            // 
-            // l_summonerNameTitle
-            // 
-            this.l_summonerNameTitle.AutoSize = true;
-            this.l_summonerNameTitle.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.l_summonerNameTitle.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.l_summonerNameTitle.Location = new System.Drawing.Point(185, 39);
-            this.l_summonerNameTitle.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.l_summonerNameTitle.Name = "l_summonerNameTitle";
-            this.l_summonerNameTitle.Size = new System.Drawing.Size(0, 37);
-            this.l_summonerNameTitle.TabIndex = 11;
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel8.Controls.Add(this.label4);
-            this.panel8.Controls.Add(this.tb_summonerName);
-            this.panel8.Controls.Add(this.panel9);
-            this.panel8.Controls.Add(this.bt_search);
-            this.panel8.Location = new System.Drawing.Point(216, 38);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(430, 168);
-            this.panel8.TabIndex = 4;
+            this.cb_region.FormattingEnabled = true;
+            this.cb_region.Items.AddRange(new object[] {
+            "eun1",
+            "br1",
+            "kr",
+            "jp1"});
+            this.cb_region.Location = new System.Drawing.Point(438, 30);
+            this.cb_region.Name = "cb_region";
+            this.cb_region.Size = new System.Drawing.Size(121, 38);
+            this.cb_region.TabIndex = 11;
             // 
             // label4
             // 
@@ -366,59 +337,21 @@ namespace API_GUI
             this.bt_search.UseVisualStyleBackColor = false;
             this.bt_search.Click += new System.EventHandler(this.bt_searchClick);
             // 
-            // label3
+            // p_playerStats
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(70, 96);
-            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 37);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Id:";
-            // 
-            // l_id
-            // 
-            this.l_id.AutoSize = true;
-            this.l_id.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.l_id.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.l_id.Location = new System.Drawing.Point(185, 96);
-            this.l_id.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.l_id.Name = "l_id";
-            this.l_id.Size = new System.Drawing.Size(0, 37);
-            this.l_id.TabIndex = 13;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label6.Location = new System.Drawing.Point(70, 155);
-            this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(92, 37);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "Level";
-            // 
-            // l_level
-            // 
-            this.l_level.AutoSize = true;
-            this.l_level.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.l_level.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.l_level.Location = new System.Drawing.Point(185, 155);
-            this.l_level.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.l_level.Name = "l_level";
-            this.l_level.Size = new System.Drawing.Size(0, 37);
-            this.l_level.TabIndex = 15;
+            this.p_playerStats.Location = new System.Drawing.Point(212, 225);
+            this.p_playerStats.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.p_playerStats.Name = "p_playerStats";
+            this.p_playerStats.Size = new System.Drawing.Size(884, 480);
+            this.p_playerStats.TabIndex = 5;
             // 
             // form_App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1115, 720);
-            this.Controls.Add(this.panel8);
-            this.Controls.Add(this.playerStatPanel);
+            this.Controls.Add(this.p_playerStats);
+            this.Controls.Add(this.p_search);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -428,15 +361,14 @@ namespace API_GUI
             this.Name = "form_App";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.form_App_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.playerStatPanel.ResumeLayout(false);
-            this.playerStatPanel.PerformLayout();
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
+            this.p_search.ResumeLayout(false);
+            this.p_search.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -457,20 +389,15 @@ namespace API_GUI
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel playerStatPanel;
-        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel p_search;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tb_summonerName;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button bt_search;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label l_summonerNameTitle;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label l_id;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label l_level;
+        private System.Windows.Forms.ComboBox cb_region;
+        private GUI.PlayerSummaryPanel p_playerStats;
     }
 }
 

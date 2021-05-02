@@ -10,9 +10,9 @@ namespace API_GUI
 {
     class SummonerProcessor
     {
-        public async static Task<SummonerModel> LoadSummoner(string summonerName)
+        public async static Task<SummonerModel> LoadSummoner(string summonerName, string region)
         {
-            string url = $"https://eun1.api.riotgames.com/lol/summoner/v4/summoners/by-name/{summonerName}?api_key={ApiHelper.DeveloperKey}";
+            string url = $"https://{region}.api.riotgames.com/lol/summoner/v4/summoners/by-name/{summonerName}?api_key={ApiHelper.DeveloperKey}";
 
             using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
             {

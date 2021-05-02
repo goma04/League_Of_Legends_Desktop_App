@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace API_GUI
+namespace API_GUI.GUI
 {
-    public partial class CustomControl : UserControl
+    public partial class PlayerSummaryPanel : UserControl
     {
-        public CustomControl()
+        public PlayerSummaryPanel()
         {
             InitializeComponent();
         }

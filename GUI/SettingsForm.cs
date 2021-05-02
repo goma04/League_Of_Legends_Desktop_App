@@ -15,12 +15,15 @@ namespace API_GUI
         public SettingsForm()
         {
             InitializeComponent();
+            currentKey.SetToolTip(pb_info,ApiHelper.DeveloperKey);
         }
 
         private void bt_save_Click(object sender, EventArgs e)
         {
             ApiHelper.DeveloperKey = tb_key.Text;
+            FileHandler.saveToTxt(tb_key.Text,"apiKey.txt");
             DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }
